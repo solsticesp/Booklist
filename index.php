@@ -11,6 +11,7 @@
 <body>
     <form method="post" action="login.php">
         <h2>LOGIN</h2>
+        <h2>HERE</h2>
         
         <?php if (isset($_GET['error'])) { ?>
             <p class="error">
