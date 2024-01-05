@@ -22,7 +22,7 @@ if (empty($user)) {
     header("Location: index.php?error=Password is required");
     exit();
 } else {
-    //hashing the pass
+    //hashing the password
     $pass = md5($pass);
 
     $sql = "SELECT * FROM users WHERE `user_name`='$user' AND `password`='$pass'";
