@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db_conn.php");
+include("db/config/db_conn.php");
 
 
 if (isset($_SESSION["id"]) && isset($_SESSION["user_name"])) {
@@ -12,10 +12,10 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"])) {
     <head>
 
         <title>HOME</title>
-        <link rel="stylesheet" href="homestyle.css">
+        <link rel="stylesheet" href="pages/home/home.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="autocomplete.js" defer></script>
+        <script src="helpers/js/autocomplete.js" defer></script>
 
     </head>
 
@@ -24,7 +24,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"])) {
         <nav class="navbar bg-transparent">
             <div class="container d-flex">
                 <a class="navbar-brand p-2 flex-grow-1" href="home.php">
-                    <img src="./pics/owl-blue.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                    <img src="assets/images/owl-blue.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
                     Hello,
                     <?php echo $_SESSION['user_name']; ?>!
                 </a>
@@ -34,14 +34,14 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"])) {
                     <div class="search-box">
                         <input type="text" id="input-box" placeholder="Search for a Book" autocomplete="off">
 
-                        <button type="submit"><img class="search-icon" src="pics/Search_icon_xs.svg.png"></button>
+                        <button type="submit"><img class="search-icon" src="assets/images/Search_icon_xs.svg.png"></button>
                     </div>
                     
                     <div id="autosuggest" class="position-absolute bg-secondary list-group"></div>
 
                 </div>
 
-                <a href="logout.php" class="nav-item fs-5"><img src="pics/logout.png" alt="logout" width="35" height="40" class="d-inline-block align-text-top"></img></a>
+                <a href="auth/logout.php" class="nav-item fs-5"><img src="assets/images/logout.png" alt="logout" width="35" height="40" class="d-inline-block align-text-top"></img></a>
             </div>
         </nav>
 
@@ -97,8 +97,8 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"])) {
                                     <td>
                                         <?php echo $row['isbn']; ?>
                                     </td>
-                                    <td><a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-success">Update <img src="pics/update.png" width="20" height="20"></img></a></td>
-                                    <td><a href="delete_book.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-danger">Delete <img src="pics/delete2.png" width="20" height="20"></img></a></td>
+                                    <td><a href="pages/update/update.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-success">Update <img src="assets/images/update.png" width="20" height="20"></img></a></td>
+                                    <td><a href="utils/delete_book.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-danger">Delete <img src="assets/images/delete2.png" width="20" height="20"></img></a></td>
                                 </tr>
                                 <?php
                             }
@@ -135,7 +135,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"])) {
             ?>
 
             <!-- Modal -->
-            <form action="insert_data.php" method="post">
+            <form action="db/insert_data.php" method="post">
                 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">

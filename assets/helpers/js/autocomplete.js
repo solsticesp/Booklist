@@ -1,7 +1,16 @@
 const input = document.getElementById('input-box');
 const suggestions = document.getElementById('autosuggest');
 
-const books = [ 'The Eye of the World', 'Harry Potter and the Chamber of Secrets', 'The Name of the Rose', 'The Picture of Dorian Grey', 'Anna Karenina', 'Under the Yoke', 'Ema', 'Harry Potter and the Prisoner of Azkaban'];
+const books = [
+	'The Eye of the World',
+	'Harry Potter and the Chamber of Secrets',
+	'The Name of the Rose',
+	'The Picture of Dorian Grey',
+	'Anna Karenina',
+	'Under the Yoke',
+	'Ema',
+	'Harry Potter and the Prisoner of Azkaban'
+];
 
 function search(str) {
 	let results = [];
@@ -19,14 +28,15 @@ function search(str) {
 function searchHandler(e) {
 	const inputVal = e.currentTarget.value;
 	let results = [];
+
 	if (inputVal.length > 0) {
 		results = search(inputVal);
 	}
+	
 	showSuggestions(results, inputVal);
 }
 
 function showSuggestions(results, inputVal) {
-    
     suggestions.innerHTML = '';
 
 	if (results.length > 0) {

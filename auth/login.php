@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db_conn.php";
+include "db/config/db_conn.php";
 
 if (isset($_POST['user']) && isset($_POST['pass'])) {
     function validate($data)
@@ -36,7 +36,7 @@ if (empty($user)) {
             $_SESSION['user_name'] = $row['user_name'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['id'] = $row['id'];
-            header('Location: home.php');
+            header('Location: pages/home/home.php');
             exit();
         }
     } else {
